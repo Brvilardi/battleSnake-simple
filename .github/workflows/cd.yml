@@ -30,6 +30,6 @@ jobs:
           # aws bucket name
           aws_bucket: ${{ secrets.AWS_BUCKET }}
           # directory to upload
-          source_dir: main.py
-          # destination directory for upload
+          source_dir: src
+
 
