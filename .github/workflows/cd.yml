@@ -39,7 +39,7 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
         run: |
-                aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/r8j1n2q5
+                aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/$ECR_REGISTRY
                 docker build -t $ECR_REPOSITORY .
                 docker tag $ECR_REPOSITORY:latest public.ecr.aws/$ECR_REGISTRY/$ECR_REPOSITORY:latest
                 docker push public.ecr.aws/$ECR_REGISTRY/$ECR_REPOSITORY:latest
