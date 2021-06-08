@@ -40,6 +40,7 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
         run: |
           echo reg: ${{ steps.login-ecr.outputs.registry }}
+          export AWS_SESSION_TOKEN=$SESSION_TOKEN
           docker build -t $ECR_REPOSITORY .
           docker tag $ECR_REPOSITORY:latest public.ecr.aws/$ECR_REGISTRY/$ECR_REPOSITORY:latest
           docker push public.ecr.aws/$ECR_REGISTRY/$ECR_REPOSITORY:latest
