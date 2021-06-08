@@ -43,7 +43,7 @@ jobs:
           export AWS_SESSION_TOKEN=$SESSION_TOKEN
           docker build -t $ECR_REPOSITORY .
           docker tag $ECR_REPOSITORY:latest public.ecr.aws/$ECR_REGISTRY/$ECR_REPOSITORY:latest
-          docker push public.ecr.aws/$ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker push public.ecr.aws/$ECR_REGISTRY:latest
 
 
 
