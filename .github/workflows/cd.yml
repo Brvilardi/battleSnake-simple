@@ -45,6 +45,7 @@ jobs:
 
 
   update-ECS:
+    needs: [deploy-to-aws]
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     
