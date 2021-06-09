@@ -6,7 +6,7 @@ from src.main import app
 def test_read_main(client):
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"message": "Hello World!!! From Fargate"}
+    assert response.json() == {"message": "Hello World!!! From Fargate2"}
 
 
 if __name__ == '__main__':
