@@ -37,9 +37,6 @@ jobs:
           # Tool to use for archiving
           # type: # optional, default is zip
       
-      - name: ls
-        run: ls src
-      
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
