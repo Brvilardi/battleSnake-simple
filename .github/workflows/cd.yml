@@ -38,7 +38,7 @@ jobs:
           # type: # optional, default is zip
       
       - name: ls
-        run: ls
+        run: ls src
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -54,7 +54,7 @@ jobs:
         with:
            args: --acl public-read
         env:
-          FILE: lambda.zip
+          FILE: src/lambda.zip
           AWS_REGION: ${{ secrets.AWS_REGION }}
           S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           # S3_KEY: ${{ secrets.S3_KEY }}
