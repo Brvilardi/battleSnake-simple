@@ -68,7 +68,7 @@ jobs:
           AWS_CLUSTER_SERVICE: ${{ secrets.AWS_CLUSTER_SERVICE }}
         
         run: |
-          aws ecs update-service --cluster <cluster name> --service <service name> --force-new-deployment
+          aws ecs update-service --cluster $AWS_CUSTER --service $AWS_CLUSTER_SERVICE --force-new-deployment
 
 
 
