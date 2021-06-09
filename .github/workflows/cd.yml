@@ -37,6 +37,7 @@ jobs:
           # the name/path to the requirements.txt file
           requirements_txt: requirements.txt # default is requirements.txt
           # The ARN for the Lambda layer the dependencies should be pushed to without the version (every push is a new version).
+          lambda_layer_arn: arn:aws:lambda:sa-east-1:640010853179:layer:AWSLambda-Python38-SciPy1x:28
           # The Lambda function name. Check the AWS docs/readme for examples.
           lambda_function_name: battle-snake-noob
 
