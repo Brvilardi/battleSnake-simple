@@ -22,25 +22,42 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      - name: Copy python modules
+        run: |
+          sudo apt-get install python3
+          sudo apt-get install python3-pip
+          pip install -r requirements.txt
+          mkdir temp
+          ls
+           
+      
+      - name: Zip Release
+        uses: TheDoctor0/zip-release@0.4.2
+        with:
+          filename: lambda.zip # default is release.zip
+          path: . # optional, default is .
+          directory: src # optional, default is .
+      
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
-          
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Build, tag, and push image to Amazon ECR
+      - name: S3 File Upload
+        # You may pin to the exact commit or the version.
+        # uses: zdurham/s3-upload-github-action@dc0a62ddb6abe7cdbee3125659e32e729060f62a
+        uses: zdurham/s3-upload-github-action@master
+        with:
+           args: --acl public-read
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
-          IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$ECR_REPOSITORY .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$ECR_REPOSITORY
+          FILE: src/lambda.zip
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          # S3_KEY: ${{ secrets.S3_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 
 
