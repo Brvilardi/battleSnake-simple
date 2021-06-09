@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 
 
-from src.main import app
+from src.lambda_function import app
 
 def test_read_main(client):
     response = client.get("/")
