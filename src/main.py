@@ -7,7 +7,13 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"message": "Battle snake noob"}
+    obj = {'APIVersion': "1",
+		'Author':     "bvilardi",
+		'Color':      "#888888",
+		'Head':       "default",
+		'Tail':       "default"}
+
+    return obj
 
 
 @app.post("/start")

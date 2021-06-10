@@ -11,4 +11,4 @@ def test_read_main(client):
 
 if __name__ == '__main__':
     client = TestClient(app)
-    test_read_main(client)
+    # test_read_main(client)
