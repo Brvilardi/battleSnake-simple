@@ -16,19 +16,23 @@ async def root():
 
 @app.post("/start")
 async def start(data: dict):
-    print("Game start!\n", data["game"])
+    print("Game start!")
+    print(data["game"])
     return "Ready!"
 
 
 @app.post("/move")
 async def move(data: dict):
-    print("Move!\n", data)
+    print("Move!")
+    print(data)
     choices = ["up", "down", "left", "right"]
     choice = random.choice(choices)
+    print(f"My move: {choice}")
     return {"move": choice}
 
 
 @app.post("/end")
 async def end(data: dict):
-    print("End!\n", data)
+    print("End!")
+    print(data)
     return "game ended"
