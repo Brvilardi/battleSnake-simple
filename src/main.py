@@ -63,7 +63,7 @@ def movesThatWontColideBoard(moves=["up", "down", "left", "right"], head=None):
 async def root():
     obj = {'apiversion': "1",
            'author': "bvilardi",
-           'color': "#999999",
+           'color': "#777777",
            'head': "default",
            'tail': "default"}
     return obj
